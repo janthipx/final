@@ -1,19 +1,19 @@
 // ==================== ENUMS ====================
-enum Role {
-  Leader = "Leader",
-  Member = "Member"
+class Role {
+  static Leader = "Leader";
+  static Member = "Member";
 }
 
-enum MessageType {
-  Text = "text",
-  Emoji = "emoji",
-  Sticker = "sticker"
+class MessageType {
+  static Text = "text";
+  static Emoji = "emoji";
+  static Sticker = "sticker";
 }
 
-enum MissionStatus {
-  Waiting = "waiting",
-  InProgress = "inProgress",
-  Ended = "ended"
+class MissionStatus {
+  static Waiting = "waiting";
+  static InProgress = "inProgress";
+  static Ended = "ended";
 }
 
 // ==================== INTERFACE ====================
