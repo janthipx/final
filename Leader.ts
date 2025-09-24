@@ -1,4 +1,5 @@
-import { Mission } from "./Final/interface Misssion";
+import { Mission } from "./Final/Misssion";
+
 
 export class Leader {
   constructor(public id: number, public name: string) {}
