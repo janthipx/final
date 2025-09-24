@@ -10,6 +10,10 @@ export class Score {
   ) {}
 
   calculateScore(): number {
-    return this.score;
+    if (this.result === ScoreResult.Success) {
+      return this.score + 10; // เพิ่มคะแนนถ้าสำเร็จ
+    } else {
+      return this.score - 5; // ลดคะแนนถ้าไม่สำเร็จ
+    }
   }
 }
