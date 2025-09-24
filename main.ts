@@ -1,16 +1,36 @@
 
-import { Database } from "../Databese";
 import { Leader } from "../Leader";
-import { Member } from "./Member";
+import { Member } from "../Final/Member";
+import { MissionStatus } from "../Final/enum";
 import { ConcreteMission } from "../ConcreteMission";
-import { Score } from "../Score";
-import { ScoreResult } from "./enum";
+import { Database } from "../Databese";
+import { Score, ScoreResult } from "../Score";
+
 
 // สร้าง Leader
 const leader = new Leader(1, "Alice");
 
 // สร้าง Mission
-const mission = new ConcreteMission(101, "Rescue Mission", leader);
+const mission: ConcreteMission = {
+    id: 1,
+    name: "Rescue Operation",
+    leader: leader,
+    members: [],
+    status: MissionStatus.NotStarted,
+    startMission() {
+        this.status = MissionStatus.InProgress;
+    },
+
+    finishMission() {
+        this.status = MissionStatus.Finished;
+    },
+    addMember: function (member: Member): void {
+        throw new Error("Function not implemented.");
+    },
+    removeMember: function (member: Member): void {
+        throw new Error("Function not implemented.");
+    }
+};
 
 // สร้าง Member
 const member1 = new Member(1, "Bob");
