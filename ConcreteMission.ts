@@ -7,7 +7,5 @@ export interface ConcreteMission extends Mission {
   id: number;
   name: string;
   leader: Leader;
-  members: Member[];
-  status: MissionStatus;
-
+  
 }
