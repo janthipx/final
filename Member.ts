@@ -1,5 +1,7 @@
-import { Mission } from "./interface Misssion";
+
+import { Mission } from "./Misssion";
 import { MemberStatus } from "./enum";
+
 
 export class Member {
   constructor(
