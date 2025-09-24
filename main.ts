@@ -2,7 +2,7 @@
 import { Database } from "../Databese";
 import { Leader } from "../Leader";
 import { Member } from "./Member";
-import { ConcreteMission } from "./ConcreteMission";
+import { ConcreteMission } from "../ConcreteMission";
 import { Score } from "../Score";
 import { ScoreResult } from "./enum";
 
