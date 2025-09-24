@@ -6,7 +6,8 @@ export class Score {
     public memberId: number,
     public missionId: number,
     public score: number,
-    public result: ScoreResult
+    public result: ScoreResult,
+    public leaderStatus: boolean 
   ) {}
 
   calculateScore(): number {
@@ -17,3 +18,5 @@ export class Score {
     }
   }
 }
+export { ScoreResult };
+
