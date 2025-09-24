@@ -1,65 +1,43 @@
-import { User, Role } from "./final.ts";
-import { Mission } from "./final";
-import { Database } from "./final";
-import { MessageType } from "./final";
-import { ChatRoom } from "./final";
 
-// ==================== USERS ====================
-const alice = new User("u1", "Alice", Role.Leader);
-const bob = new User("u2", "Bob", Role.Member);
-const charlie = new User("u3", "Charlie", Role.Member);
+import { Database } from "../Databese";
+import { Leader } from "../Leader";
+import { Member } from "./Member";
+import { ConcreteMission } from "./ConcreteMission";
+import { Score } from "../Score";
+import { ScoreResult } from "./enum";
 
-// ==================== DATABASE ====================
+// สร้าง Leader
+const leader = new Leader(1, "Alice");
+
+// สร้าง Mission
+const mission = new ConcreteMission(101, "Rescue Mission", leader);
+
+// สร้าง Member
+const member1 = new Member(1, "Bob");
+const member2 = new Member(2, "Charlie");
+
+// Member join mission
+member1.joinMission(mission);
+member2.joinMission(mission);
+
+// Leader start mission
+console.log(leader.startMission(mission));
+
+// สร้าง Database
 const db = new Database();
-db.addUser(alice);
-db.addUser(bob);
-db.addUser(charlie);
+db.saveMission(mission);
+db.saveMember(member1);
+db.saveMember(member2);
 
-// ==================== CREATE MISSIONS ====================
-const bankHeist = new Mission("m1", "ปล้นธนาคาร", alice);
-const soccerGame = new Mission("m2", "ไปเตะบอล", bob);
-const huaHinTrip = new Mission("m3", "ไปเที่ยวหัวหิน", charlie);
+// Leader end mission
+console.log(leader.endMission(mission));
 
-db.addMission(bankHeist);
-db.addMission(soccerGame);
-db.addMission(huaHinTrip);
+// ประกาศผล
+console.log(leader.announceResults(mission));
 
-// ==================== JOIN MISSIONS ====================
-bob.joinMission(bankHeist);
-charlie.joinMission(bankHeist);
+// สร้าง Score
+const score1 = new Score(member1.id, mission.id, 85, ScoreResult.Success);
+const score2 = new Score(member2.id, mission.id, 60, ScoreResult.Failure);
 
-alice.joinMission(soccerGame);
-charlie.joinMission(soccerGame);
-
-alice.joinMission(huaHinTrip);
-bob.joinMission(huaHinTrip);
-
-// ==================== SEND MESSAGES ====================
-alice.sendMessage(bankHeist, "พร้อมแล้วทุกคน?");
-bob.sendMessage(bankHeist, "พร้อมครับ!");
-charlie.sendMessage(bankHeist, "โอเค!");
-
-alice.sendMessage(soccerGame, "เจอกันที่สนาม 18.00 น."); 
-charlie.sendMessage(soccerGame, "รับทราบครับ!");
-
-alice.sendMessage(huaHinTrip, "ออกเดินทางวันเสาร์นะครับ");
-bob.sendMessage(huaHinTrip, "โอเค ขอบคุณสำหรับข้อมูล");
-
-// ==================== FUNCTION: PRINT USER CHAT HISTORY ====================
-function printUserChatHistory(user: User) {
-  console.log(`\n=== Chat history for ${user.name} ===`);
-  
-  user.history.missionsJoined.forEach(mission => {
-    console.log(`-- Mission: ${mission.name} --`);
-    mission.chatRoom.getHistory()
-      .filter(msg => msg.sender.id === user.id)
-      .forEach(msg => {
-        console.log(`[${msg.timestamp.toISOString()}] ${msg.sender.name}: ${msg.content} (${msg.type})`);
-      });
-  });
-}
-
-// ==================== PRINT HISTORY ====================
-printUserChatHistory(alice);
-printUserChatHistory(bob);
-printUserChatHistory(charlie);
+console.log(`Member ${member1.name} scored: ${score1.calculateScore()} (${score1.result})`);
+console.log(`Member ${member2.name} scored: ${score2.calculateScore()} (${score2.result})`);
