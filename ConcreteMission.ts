@@ -1,5 +1,5 @@
 import { Mission } from "./Final/interface Misssion";
-import { Leader } from "./Leader";
+import { Leader } from "../Leader";
 import { Member } from "./Final/Member";
 import { MissionStatus } from "./Final/enum";
 
