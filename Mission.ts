@@ -3,22 +3,17 @@ import { Member } from "./Member";
 import { MissionStatus } from "./enum";
 
 export class Mission {
-  members: Member[];
-  status: MissionStatus;
-  id: number | undefined;
-  name: any;
+  private members: Member[] = [];
+  private status: MissionStatus = MissionStatus.NotStarted;
 
-  constructor() {
-    this.members = [];
-    this.status = MissionStatus.NotStarted;
-  }
+  constructor(
+    public id: number,
+    public name: string,
+    public leader: Leader
+  ) {}
 
   startMission(): void {
     this.status = MissionStatus.InProgress;
-  }
-
-  finishMission(): void {
-    this.status = MissionStatus.Finished;
   }
 
   addMember(member: Member): void {
@@ -28,6 +23,10 @@ export class Mission {
   removeMember(member: Member): void {
     this.members = this.members.filter((m) => m.id !== member.id);
   }
-}
 
+  finishMission(): void {
+    this.status = MissionStatus.Finished;
+  }
+
+}
 
