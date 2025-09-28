@@ -1,11 +1,14 @@
 import { MemberStatus } from "./enum";
+import { User } from "./User";
 
-export class Member {
+export class Member extends User {
   constructor(
     public id: number,
     public name: string,
     public status: MemberStatus = MemberStatus.Inactive
-  ) {}
+  ) {
+    super(id, name);
+  }
 
   User(): void {
     this.status = MemberStatus.Active;
