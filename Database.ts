@@ -1,5 +1,5 @@
-import { Mission } from "./Final/Misssion";
-import { Member } from "./Final/Member";
+import { Mission } from "./Misssion";
+import { Member } from "./Member";
 import { Score } from "./Score";
 
 
@@ -20,6 +20,16 @@ export class Database {
     this.scores.push(score);
   }
 
+  deleteMission(id: number): void {
+    this.missions = this.missions.filter((m) => m.id !== id);
+  }
+
+  updateMission(updatedMission: Mission): void {
+    this.missions = this.missions.map((m) =>
+      m.id === updatedMission.id ? updatedMission : m
+    );
+  }
+  
   fetchMission(id: number): Mission | null {
     return this.missions.find((m) => m.id === id) || null;
   }
@@ -30,5 +40,7 @@ export class Database {
   fetchScoresByMember(memberId: number): Score[] {
     return this.scores.filter((s) => s.memberId === memberId);
   }
+
+  
 }
 
