@@ -1,5 +1,5 @@
 
-import { ScoreResult } from "./Final/enum";
+import { ScoreResult } from "./enum";
 
 export class Score {
   constructor(
@@ -16,7 +16,8 @@ export class Score {
     } else {
       return this.score - 5; // ลดคะแนนถ้าไม่สำเร็จ
     }
+    this.leaderStatus = true; // สมมติว่า leaderStatus เป็น true ถ้าผ่านการตรวจสอบ
+    return this.score;
   }
 }
 export { ScoreResult };
-
