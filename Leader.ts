@@ -1,8 +1,11 @@
 import { Mission } from "./Misssion";
+import { User } from "./User";
 
 
-export class Leader {
-  constructor(public id: number, public name: string) {}
+export class Leader extends User {
+  constructor(public id: number, public name: string) {
+    super(id, name);
+  }
 
   startMission(mission: Mission): string {
     mission.startMission();
