@@ -1,6 +1,14 @@
-import { Leader } from "../Leader";
+mport { Leader } from "./Leader";
 import { Member } from "./Member";
 import { MissionStatus } from "./enum";
+
+
+export interface ConcreteMission  {
+  id: number;
+  name: string;
+  leader: Leader;
+  
+}
 
 export class Mission {
   private members: Member[] = [];
@@ -27,6 +35,8 @@ export class Mission {
   finishMission(): void {
     this.status = MissionStatus.Finished;
   }
+  getters(): Member[] {
+    return this.members;
+  }
 
 }
-
