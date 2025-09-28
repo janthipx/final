@@ -1,16 +1,15 @@
-import { Leader } from "../Leader";
-import { Member } from "../Final/Member";
-import { MissionStatus } from "../Final/enum";
-import { ConcreteMission } from "../ConcreteMission";
-import { Database } from "../Databese";
-import { Score, ScoreResult } from "../Score";
-import { Mission } from "../Final/Misssion";
+import { Leader } from "./Leader";
+import { Member } from "./Member";
+import { MissionStatus } from "./enum";
+import { Database } from "./Databese";
+import { Score, ScoreResult } from "./Score";
+import { Mission } from "./Misssion";
 
 // สร้าง Leader
 const leader = new Leader(1, "Alice");
 
 // สร้าง Mission
-const mission = new ConcreteMission(1, "First Mission", leader);
+const mission = new Mission(1, "First Mission", leader);
 
 // สร้าง Member
 const member1 = new Member(1, "Bob");
@@ -26,10 +25,10 @@ console.log(
 );
 
 // เริ่ม Mission
-mission.startMission();
+leader.startMission(mission);
 console.log(
   `Mission ${mission.name} status: ${
-    MissionStatus[mission.status as keyof typeof MissionStatus]
+    MissionStatus[mission.status as unknown as keyof typeof MissionStatus]
   }`
 );
 
@@ -48,7 +47,7 @@ console.log(
 mission.finishMission();
 console.log(
   `Mission ${mission.name} status: ${
-    MissionStatus[mission.status as keyof typeof MissionStatus]
+    MissionStatus[mission.status as unknown as keyof typeof MissionStatus]
   }`
 );
 
