@@ -1,4 +1,4 @@
-import { Mission } from "./Final/Misssion";
+import { Mission } from "./Misssion";
 
 
 export class Leader {
