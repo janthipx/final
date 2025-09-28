@@ -1,7 +1,4 @@
-
-import { Mission } from "./Misssion";
 import { MemberStatus } from "./enum";
-
 
 export class Member {
   constructor(
@@ -10,13 +7,19 @@ export class Member {
     public status: MemberStatus = MemberStatus.Inactive
   ) {}
 
-  joinMission(mission: Mission): void {
-    mission.addMember(this);
+  User(): void {
+    this.status = MemberStatus.Active;
+  }
+  joinMission(): void {
     this.status = MemberStatus.Joined;
   }
-
-  leaveMission(mission: Mission): void {
-    mission.removeMember(this);
+  leaveMission(): void {
     this.status = MemberStatus.Left;
+  }
+  Inactive(): void {
+    this.status = MemberStatus.Inactive;
+  }
+  Active(): void {
+    this.status = MemberStatus.Active;
   }
 }
