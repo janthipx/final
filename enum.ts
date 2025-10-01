@@ -1,5 +1,5 @@
 
-export enum MemberStatus {
+export enum ConcreatMission {
   Joined = "joined",
   Left = "left",
   Active = "active",
@@ -12,7 +12,11 @@ export enum MissionStatus {
   Finished = "finished",
 }
 
+
+
 export enum ScoreResult {
   Success = "success",
   Failure = "failure",
+  Pass = "Pass",
+  Fail = "Fail",
 }
