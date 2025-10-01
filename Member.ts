@@ -10,9 +10,7 @@ export class Member extends User {
     super(id, name);
   }
 
-  User(): void {
-    this.status = MemberStatus.Active;
-  }
+
   joinMission(): void {
     this.status = MemberStatus.Joined;
   }
