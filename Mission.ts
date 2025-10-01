@@ -1,42 +1,26 @@
-mport { Leader } from "./Leader";
-import { Member } from "./Member";
-import { MissionStatus } from "./enum";
+import { MemberStatus } from "./enum";
+import { User } from "./User";
 
-
-export interface ConcreteMission  {
-  id: number;
-  name: string;
-  leader: Leader;
-  
-}
-
-export class Mission {
-  private members: Member[] = [];
-  private status: MissionStatus = MissionStatus.NotStarted;
-
+export class Member extends User {
   constructor(
     public id: number,
     public name: string,
-    public leader: Leader
-  ) {}
-
-  startMission(): void {
-    this.status = MissionStatus.InProgress;
+    public status: MemberStatus = MemberStatus.Inactive
+  ) {
+    super(id, name);
   }
 
-  addMember(member: Member): void {
-    this.members.push(member);
-  }
 
-  removeMember(member: Member): void {
-    this.members = this.members.filter((m) => m.id !== member.id);
+  joinMission(): void {
+    this.status = MemberStatus.Joined;
   }
-
-  finishMission(): void {
-    this.status = MissionStatus.Finished;
+  leaveMission(): void {
+    this.status = MemberStatus.Left;
   }
-  getters(): Member[] {
-    return this.members;
+  Inactive(): void {
+    this.status = MemberStatus.Inactive;
   }
-
+  Active(): void {
+    this.status = MemberStatus.Active;
+  }
 }
