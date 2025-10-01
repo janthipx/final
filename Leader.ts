@@ -1,4 +1,4 @@
-import { Mission } from "./Misssion";
+import { Mission } from "./Mission";
 import { User } from "./User";
 
 
