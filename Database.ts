@@ -1,23 +1,20 @@
-import { Mission } from "./Misssion";
+import { Mission } from "./Mission";
 import { Member } from "./Member";
-import { Score } from "./Score";
 
 
 export class Database {
   private missions: Mission[] = [];
   private members: Member[] = [];
-  public scores: Score[] = [];
 
+  getMissions(): Mission[] {
+    return this.missions;
+  }
   saveMission(mission: Mission): void {
     this.missions.push(mission);
   }
 
   saveMember(member: Member): void {
     this.members.push(member);
-  }
-
-  saveScore(score: Score): void {
-    this.scores.push(score);
   }
 
   deleteMission(id: number): void {
@@ -37,10 +34,4 @@ export class Database {
     return this.members.find((m) => m.id === id) || null;
   }
 
-  fetchScoresByMember(memberId: number): Score[] {
-    return this.scores.filter((s) => s.memberId === memberId);
-  }
-
-  
 }
-
