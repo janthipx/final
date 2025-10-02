@@ -4,7 +4,3 @@ export enum MemberStatus {
   Active = "active",
   Inactive = "inactive"
 }
-
-
-
-
