@@ -109,11 +109,11 @@ async function joinMission(user: User) {
   console.log(`${member.name} joined mission "${mission.name}"`);
 }
 
-// ----- Mission Menu -----
+// ----- New Mission -----
 async function missionMenu(user: User) {
   let running = true;
   while (running) {
-    console.log("\n=== MISSION MENU ===");
+    console.log("\n===New MISSION ===");
     console.log("1. Create Mission (Leader)");
     console.log("2. Join Mission (Member)");
     console.log("3. Start Mission (Leader Only)");
